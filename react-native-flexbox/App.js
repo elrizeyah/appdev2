@@ -1,10 +1,10 @@
 import { View } from 'react-native';
-import Flex from './components/Flex';
+import FlexDirectionBasics from './components/FlexDirection';
 
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-      <Flex />
+      <FlexDirectionBasics />
     </View>
   );
 }
