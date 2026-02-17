@@ -1,10 +1,10 @@
 import { View } from 'react-native';
-import AlignItemsLayout from './components/AlignItems';
+import AlignSelfLayout from './components/AlignSelf';
 
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-      <AlignItemsLayout />
+      <AlignSelfLayout />
     </View>
   );
 }
