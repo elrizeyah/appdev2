@@ -1,4 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Login() {
   return (
@@ -10,20 +11,37 @@ export default function Login() {
       />
 
       {/* Username Input */}
-      <TextInput
-        placeholder="Username"
-        style={styles.input}
-      />
+      <View style={styles.inputContainer}>
+        <Ionicons
+          name="person-outline"
+          size={24}
+          color="black"
+          style={styles.icon}
+        />
+        <TextInput
+          placeholder="Username"
+          style={styles.input}
+        />
+      </View>
 
       {/* Password Input */}
-      <TextInput
-        placeholder="Password"
-        secureTextEntry
-        style={styles.input}
-      />
+      <View style={styles.inputContainer}>
+        <Ionicons
+          name="lock-closed-outline"
+          size={24}
+          color="black"
+          style={styles.icon}
+        />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry
+          style={styles.input}
+        />
+      </View>
 
       {/* Login Button */}
       <TouchableOpacity style={styles.button}>
+        <Ionicons name="log-in-outline" size={20} color="#fff" />
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
@@ -50,23 +68,34 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 30,
   },
-  input: {
-    height: 40,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
     marginBottom: 15,
   },
+  icon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    height: 40,
+  },
   button: {
+    flexDirection: 'row',             // icon + text horizontally
     backgroundColor: '#4e9bde',
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: 10,
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
+    marginLeft: 5,                     // space between icon and text
   },
   signupText: {
     color: '#4e9bde',
