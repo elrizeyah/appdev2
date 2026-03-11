@@ -1,12 +1,12 @@
 import { View } from 'react-native';
-import FixedDimensions from './components/FixedDimensions.js';
+import PercentageDimensions from './components/PercentageDimensions.js';
 
 
 
 export default function App() {
   return (
     <View style={{ flex: 1 }}>
-      <FixedDimensions />
+      <PercentageDimensions />
     </View>
   );
 }
