@@ -1,7 +1,8 @@
 import { View } from 'react-native';
 // import Flex from './components/Flex.js';
 // import FlexDirection from './components/FlexDirection.js';
-import LayoutDirection from './components/LayoutDirection.js';
+// import LayoutDirection from './components/LayoutDirection.js';
+import JustifyContent from './components/JustifyContent.js';
 
 
 export default function App() {
@@ -9,7 +10,8 @@ export default function App() {
     <View style={{ flex: 1 }}>
       {/* <Flex/> */}
       {/* <FlexDirection/> */}
-      <LayoutDirection/>
+      {/* <LayoutDirection/> */}
+      <JustifyContent/>
     </View>
   );
 }
