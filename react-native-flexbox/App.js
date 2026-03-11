@@ -4,8 +4,8 @@ import { View } from 'react-native';
 // import LayoutDirection from './components/LayoutDirection.js';
 // import JustifyContent from './components/JustifyContent.js';
 // import AlignItems from './components/AlignItems.js';
-import AlignSelf from './components/AlignSelf.js';
-
+// import AlignSelf from './components/AlignSelf.js';
+import AlignContent from './components/AlignContent.js';
 
 export default function App() {
   return (
@@ -15,7 +15,9 @@ export default function App() {
       {/* <LayoutDirection/> */}
       {/* <JustifyContent/> */}
       {/* <AlignItems/> */}
-      <AlignSelf/>
+      {/* <AlignSelf/> */}
+      <AlignContent/>
+
     </View>
   );
 }
