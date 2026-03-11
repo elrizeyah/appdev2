@@ -5,7 +5,8 @@ import { View } from 'react-native';
 // import JustifyContent from './components/JustifyContent.js';
 // import AlignItems from './components/AlignItems.js';
 // import AlignSelf from './components/AlignSelf.js';
-import AlignContent from './components/AlignContent.js';
+// import AlignContent from './components/AlignContent.js';
+import FlexWrap from './components/FlexWrap.js';
 
 export default function App() {
   return (
@@ -16,7 +17,8 @@ export default function App() {
       {/* <JustifyContent/> */}
       {/* <AlignItems/> */}
       {/* <AlignSelf/> */}
-      <AlignContent/>
+      {/* <AlignContent/> */}
+      <FlexWrap/>
 
     </View>
   );
