@@ -3,7 +3,8 @@ import { View } from 'react-native';
 // import FlexDirection from './components/FlexDirection.js';
 // import LayoutDirection from './components/LayoutDirection.js';
 // import JustifyContent from './components/JustifyContent.js';
-import AlignItems from './components/AlignItems.js';
+// import AlignItems from './components/AlignItems.js';
+import AlignSelf from './components/AlignSelf.js';
 
 
 export default function App() {
@@ -13,7 +14,8 @@ export default function App() {
       {/* <FlexDirection/> */}
       {/* <LayoutDirection/> */}
       {/* <JustifyContent/> */}
-      <AlignItems/>
+      {/* <AlignItems/> */}
+      <AlignSelf/>
     </View>
   );
 }
