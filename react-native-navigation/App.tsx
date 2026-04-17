@@ -11,7 +11,14 @@ function HomeScreen({ navigation }) {
       <Text>Home Screen</Text>
 
 
-      <Button onPress={() => navigation.navigate('Details')}>
+      <Button
+        onPress={() =>
+          navigation.navigate('Details', {
+            itemId: 1,
+            message: 'Hello from Home',
+          })
+        }
+      >
         Go to Details
       </Button>
     </View>
@@ -19,21 +26,21 @@ function HomeScreen({ navigation }) {
 }
 
 
-function DetailsScreen({ navigation }) {
+function DetailsScreen({ route, navigation }) {
+  const { itemId, message } = route.params || {};
+
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
 
 
-      {/*go back one step*/}
+      <Text>Item ID: {itemId}</Text>
+      <Text>Message: {message}</Text>
+
+
       <Button onPress={() => navigation.goBack()}>
-        Go back
-      </Button>
-
-
-      {/*go back to first screen*/}
-      <Button onPress={() => navigation.popToTop()}>
-        Go to first screen
+        Go Back
       </Button>
     </View>
   );
