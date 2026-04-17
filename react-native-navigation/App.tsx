@@ -10,26 +10,23 @@ function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
 
-      {/* SAFE LINK STYLE (reliable in Expo) */}
-      <Text
-        style={{ marginTop: 10, color: 'blue' }}
-        onPress={() => navigation.navigate('Details')}
-      >
-        Go to Details (Link style)
-      </Text>
-
-      {/* BUTTON COMPONENT */}
+      {/* navigation object */}
       <Button onPress={() => navigation.navigate('Details')}>
-        Go to Details (Button)
+        Go to Details
       </Button>
     </View>
   );
 }
 
-function DetailsScreen() {
+function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
+
+      {/* optional: go back using navigation object */}
+      <Button onPress={() => navigation.goBack()}>
+        Go Back
+      </Button>
     </View>
   );
 }
@@ -45,7 +42,6 @@ export default function App() {
           component={HomeScreen}
           options={{ title: 'Overview' }}
         />
-
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
