@@ -2,13 +2,14 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { Button } from '@react-navigation/elements';
+
 
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
+
 
       <Button onPress={() => navigation.navigate('Details')}>
         Go to Details
@@ -17,25 +18,30 @@ function HomeScreen({ navigation }) {
   );
 }
 
+
 function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
 
-      {/* navigate = same route won't duplicate */}
-      <Button onPress={() => navigation.navigate('Details')}>
-        Go using navigate
+
+      {/*go back one step*/}
+      <Button onPress={() => navigation.goBack()}>
+        Go back
       </Button>
 
-      {/* push = always adds new instance */}
-      <Button onPress={() => navigation.push('Details')}>
-        Go using push
+
+      {/*go back to first screen*/}
+      <Button onPress={() => navigation.popToTop()}>
+        Go to first screen
       </Button>
     </View>
   );
 }
 
+
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
