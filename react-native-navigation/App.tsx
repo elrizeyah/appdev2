@@ -10,7 +10,6 @@ function HomeScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
 
-      {/* navigation object */}
       <Button onPress={() => navigation.navigate('Details')}>
         Go to Details
       </Button>
@@ -23,9 +22,14 @@ function DetailsScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
 
-      {/* optional: go back using navigation object */}
-      <Button onPress={() => navigation.goBack()}>
-        Go Back
+      {/* navigate = same route won't duplicate */}
+      <Button onPress={() => navigation.navigate('Details')}>
+        Go using navigate
+      </Button>
+
+      {/* push = always adds new instance */}
+      <Button onPress={() => navigation.push('Details')}>
+        Go using push
       </Button>
     </View>
   );
@@ -37,15 +41,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Overview' }}
-        />
-        <Stack.Screen
-          name="Details"
-          component={DetailsScreen}
-        />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
