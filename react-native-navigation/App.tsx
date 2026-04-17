@@ -8,56 +8,51 @@ import { Button } from '@react-navigation/elements';
 function HomeScreen({ navigation, route }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+     
       <Text>Home Screen</Text>
 
 
-      <Text>{route.params?.fromDetails}</Text>
+      {/* Receiving data from Details */}
+      <Text>
+        {route.params?.fromDetails ? route.params.fromDetails : 'No data yet'}
+      </Text>
 
 
-      <Button
-        onPress={() =>
-          navigation.navigate('Details', {
-            itemId: 1,
-            message: 'Hello from Home',
-          })
-        }
-      >
+      <Button onPress={() => navigation.navigate('Details')}>
         Go to Details
       </Button>
+
+
     </View>
   );
 }
 
 
-function DetailsScreen({ route, navigation }) {
-  const { itemId, message } = route.params || {};
-
-
+function DetailsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+     
       <Text>Details Screen</Text>
 
 
-      <Text>Item ID: {itemId}</Text>
-      <Text>Message: {message}</Text>
-
-
-      {/*update params*/}
+      {/* Passing params back to Home */}
       <Button
         onPress={() =>
-          navigation.setParams({
-            message: 'Updated Message!',
+          navigation.navigate('Home', {
+            fromDetails: 'Hello from Details',
           })
         }
       >
-        Update Params
+        Send Data to Home
       </Button>
 
 
-      {/*go back only once*/}
+      {/* Normal back */}
       <Button onPress={() => navigation.goBack()}>
         Go Back
       </Button>
+
+
     </View>
   );
 }
@@ -70,12 +65,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+       
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          initialParams={{ user: 'Guest' }}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+
+
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
