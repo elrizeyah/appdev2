@@ -3,10 +3,25 @@ import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomeScreen() {
+import { Button } from '@react-navigation/elements';
+
+function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
+
+      {/* SAFE LINK STYLE (reliable in Expo) */}
+      <Text
+        style={{ marginTop: 10, color: 'blue' }}
+        onPress={() => navigation.navigate('Details')}
+      >
+        Go to Details (Link style)
+      </Text>
+
+      {/* BUTTON COMPONENT */}
+      <Button onPress={() => navigation.navigate('Details')}>
+        Go to Details (Button)
+      </Button>
     </View>
   );
 }
@@ -24,13 +39,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerStyle: { backgroundColor: 'tomato' },
-          headerTintColor: 'white',
-        }}
-      >
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={HomeScreen}
