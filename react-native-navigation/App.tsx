@@ -4,74 +4,95 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from '@react-navigation/elements';
 
-function HomeScreen({ navigation, route }) {
+import type {
+  RootStackParamList,
+  DetailsProps,
+  MoreDetailsProps,
+} from './types';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+/**
+ * HOME SCREEN
+ */
+function HomeScreen({ navigation }: any) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-     
       <Text>Home Screen</Text>
 
-      {/* Receiving data from Details */}
-      <Text>
-        {route.params?.fromDetails ? route.params.fromDetails : 'No data yet'}
-      </Text>
-
-      <Button onPress={() => navigation.navigate('Details')}>
+      <Button
+        onPress={() =>
+          navigation.navigate('Details', {
+            itemId: 1,
+            message: 'Hello from Home',
+          })
+        }
+      >
         Go to Details
       </Button>
-
     </View>
   );
 }
 
-function DetailsScreen({ navigation }) {
+/**
+ * DETAILS SCREEN
+ */
+function DetailsScreen({ route, navigation }: DetailsProps) {
+  const { itemId, message } = route.params;
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-     
       <Text>Details Screen</Text>
+      <Text>Item ID: {itemId}</Text>
+      <Text>Message: {message}</Text>
 
-      {/* Passing params back to Home */}
       <Button
         onPress={() =>
-          navigation.navigate('Home', {
-            fromDetails: 'Hello from Details',
+          navigation.navigate('MoreDetails', {
+            itemId,
+            message,
           })
         }
       >
-        Send Data to Home
+        Go to More Details
       </Button>
 
       <Button onPress={() => navigation.goBack()}>
         Go Back
       </Button>
-
     </View>
   );
 }
 
-function MoreDetailsScreen({ route }) {
-  const { itemId, message } = route.params || {};
+/**
+ * MORE DETAILS SCREEN
+ */
+function MoreDetailsScreen({ route, navigation }: MoreDetailsProps) {
+  const { itemId, message } = route.params;
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>More Details Screen</Text>
-      <Text>{itemId}</Text>
-      <Text>{message}</Text>
+      <Text>Item ID: {itemId}</Text>
+      <Text>Message: {message}</Text>
+
+      <Button onPress={() => navigation.popToTop()}>
+        Back to Home
+      </Button>
     </View>
   );
 }
 
-const Stack = createNativeStackNavigator();
-
+/**
+ * APP
+ */
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
 
-        {/* KEEP HOME FIRST */}
         <Stack.Screen name="Home" component={HomeScreen} />
-
         <Stack.Screen name="Details" component={DetailsScreen} />
-
         <Stack.Screen name="MoreDetails" component={MoreDetailsScreen} />
 
       </Stack.Navigator>
