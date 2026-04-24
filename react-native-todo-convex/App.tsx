@@ -1,7 +1,7 @@
 import TodoScreen from "./screens/TodoScreen";
 
-export default function app(){
+export default function App() {
   return (
-    <TodoScreen/>
+      <TodoScreen />
   );
 }
